@@ -262,9 +262,7 @@ export class Console extends Runner {
                 content = fs.readFileSync(path.join(this.playbookPath, file), { encoding: "utf-8" });
             }
         }
-        console.log(fs.readFileSync(filepath ,{encoding: "utf-8"}));
-        fs.writeFileSync(filepath, content, )//{encoding: "utf-8", flag: "w+"});
-        console.log(fs.readFileSync(filepath ,{encoding: "utf-8"}));
+        fs.writeFileSync(filepath, content )//{encoding: "utf-8", flag: "w+"});
         return result;
     }        
 
@@ -880,6 +878,7 @@ export class Console extends Runner {
     }
 
     private async killAsyncProcesses(): Promise<void> {
+        console.log("KillProcess");    
         let killProcessesRecursively = function(processes: psList.ProcessDescriptor[], processIdToKill: number) {
             let childProcesses = processes.filter(process => {
                 return process.ppid == processIdToKill;
@@ -900,17 +899,21 @@ export class Console extends Runner {
         }
 
         if(this.asyncProcesses.length > 0) {
+            console.log("HeyHo");
             let processes: psList.ProcessDescriptor[] = Array.from((await psList()).values());
             for(let asyncProcess of this.asyncProcesses) {
                 killProcessesRecursively(processes, asyncProcess.pid);
             }
             //Check if there are still running processes on the given ports
             for(let asyncProcess of this.asyncProcesses) {
+                console.log(asyncProcess.port);
                 let processes: any[] = await findProcess("port", asyncProcess.port);
+                console.log(processes)
                 if(processes.length > 0) {
                     for(let proc of processes) {
                         try {
                             process.kill(proc.pid);
+                            
                             } catch(e) {
                                 console.error("Error killing id " + proc.pid, e);
                             }
