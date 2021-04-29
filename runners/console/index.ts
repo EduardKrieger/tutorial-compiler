@@ -262,9 +262,9 @@ export class Console extends Runner {
                 content = fs.readFileSync(path.join(this.playbookPath, file), { encoding: "utf-8" });
             }
         }
-        fs.readFileSync(filepath ,{encoding: "utf-8"});
+        console.log(fs.readFileSync(filepath ,{encoding: "utf-8"}));
         fs.writeFileSync(filepath, content, )//{encoding: "utf-8", flag: "w+"});
-        fs.readFileSync(filepath ,{encoding: "utf-8"});
+        console.log(fs.readFileSync(filepath ,{encoding: "utf-8"}));
         return result;
     }        
 
