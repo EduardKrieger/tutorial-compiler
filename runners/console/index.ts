@@ -364,7 +364,6 @@ export class Console extends Runner {
         result.returnCode = 0;
 
         let projectDir = path.join(this.getVariable(this.workspaceDirectory), runCommand.command.parameters[0]);
-        console.log(this.useDevonCommand);
         if(runCommand.command.parameters.length == 2 && runCommand.command.parameters[1].port){
             let process = this.getVariable(this.useDevonCommand) 
                 ? ConsoleUtils.executeCommandAsync("ng serve", projectDir, result, this.env) //ConsoleUtils.executeDevonCommandAsync("ng serve", projectDir, path.join(this.getWorkingDirectory(), "devonfw"), result, this.env)
@@ -879,7 +878,6 @@ export class Console extends Runner {
     }
 
     private async killAsyncProcesses(): Promise<void> {
-        console.log("KillProcess");    
         let killProcessesRecursively = function(processes: psList.ProcessDescriptor[], processIdToKill: number) {
             let childProcesses = processes.filter(process => {
                 return process.ppid == processIdToKill;
@@ -900,22 +898,17 @@ export class Console extends Runner {
         }
 
         if(this.asyncProcesses.length > 0) {
-            console.log("HeyHo");
             let processes: psList.ProcessDescriptor[] = Array.from((await psList()).values());
             for(let asyncProcess of this.asyncProcesses) {
                 killProcessesRecursively(processes, asyncProcess.pid);
             }
             //Check if there are still running processes on the given ports
             for(let asyncProcess of this.asyncProcesses) {
-                console.log(asyncProcess.port);
                 let processes: any[] = await findProcess("port", asyncProcess.port);
-                console.log(processes)
                 if(processes.length > 0) {
                     for(let proc of processes) {
                         try {
-                            console.log(proc.pid);
-                            console.log(process.kill(proc.pid));
-                            
+                            process.kill(proc.pid);
                             } catch(e) {
                                 console.error("Error killing id " + proc.pid, e);
                             }
