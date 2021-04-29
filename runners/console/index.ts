@@ -912,7 +912,8 @@ export class Console extends Runner {
                 if(processes.length > 0) {
                     for(let proc of processes) {
                         try {
-                            process.kill(proc.pid);
+                            console.log(proc.pid);
+                            console.log(process.kill(proc.pid));
                             
                             } catch(e) {
                                 console.error("Error killing id " + proc.pid, e);
