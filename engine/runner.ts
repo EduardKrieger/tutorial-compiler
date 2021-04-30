@@ -98,6 +98,8 @@ export abstract class Runner {
     }
 
     async destroy(playbook: Playbook): Promise<void> {
+        console.log("Remove Directory");
+        rimraf.sync(this.getWorkingDirectory);
     }
 
     protected createFolder(path: string, deleteFolderIfExist: boolean) {
