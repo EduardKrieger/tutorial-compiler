@@ -903,8 +903,10 @@ export class Console extends Runner {
                 killProcessesRecursively(processes, asyncProcess.pid);
             }
             //Check if there are still running processes on the given ports
-            for(let asyncProcess of this.asyncProcesses) {
-                console.log("Port=" +asyncProcess.port); 
+            //for(let asyncProcess of this.asyncProcesses) {
+                let temp =this.asyncProcesses.slice().reverse(); // trying reverse order for dependencies
+                for(let asyncProcess of temp){
+                console.log("Port=" + asyncProcess.port); 
                 console.log("PID=" + asyncProcess.pid);
                 let processes: any[] = await findProcess("port", asyncProcess.port);
                 if(processes.length > 0) {
