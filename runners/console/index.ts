@@ -904,11 +904,19 @@ export class Console extends Runner {
             }
             //Check if there are still running processes on the given ports
             for(let asyncProcess of this.asyncProcesses) {
+                console.log("Port=" +asyncProcess.port); 
+                console.log("PID=" + asyncProcess.pid);
                 let processes: any[] = await findProcess("port", asyncProcess.port);
                 if(processes.length > 0) {
+                    console.log(processes);
                     for(let proc of processes) {
                         try {
-                            process.kill(proc.pid);
+                            console.log(proc.pid);
+                            let error = process.kill(proc.pid);
+                            if(!error){
+                                console.log("Error");
+                                console.log(proc.name);
+                            }
                             } catch(e) {
                                 console.error("Error killing id " + proc.pid, e);
                             }
