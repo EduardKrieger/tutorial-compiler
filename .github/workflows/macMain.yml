@@ -1,0 +1,28 @@
+name: CI MacOS
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2-beta
+        
+      - name: install TS
+        run: npm install typescript
+      
+      - name: npm install
+        run: npm install
+
+      - name: run checkout.sh
+        run: bash checkout.sh
+
+      - name: run buildRun.sh
+        uses: GabrielBB/xvfb-action@v1.0
+        with:
+          run: sh buildRun.sh
