@@ -1,0 +1,9 @@
+== Generate Java code with CobiGen
+
+How to use CobiGen to generate an end-to-end Java CRUD application code.
+More information about CobiGen on https://devonfw.com/website/pages/docs/master-cobigen.asciidoc.html.
+
+
+=== Prerequisites
+* An installed devonfw distribution is needed. To execute the CobiGen CLI, you have to install the devonfw IDE first. Follow the https://devonfw.com/website/pages/docs/devonfw-ide-introduction.asciidoc.html[devonfw-ide] documentation to install the same.
+* You should have Java development experience
