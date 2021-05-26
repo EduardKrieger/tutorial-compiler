@@ -449,8 +449,8 @@ export class Console extends Runner {
         let workspacesDir = path.join(this.getWorkingDirectory(), runCommand.command.parameters[0]);
         if(!fs.existsSync(workspacesDir))
             fs.mkdirSync(workspacesDir);
-        this.setVariable(this.WORKSPACE_DIRECTORY, workspacesDir);    
-        
+        this.setVariable(this.WORKSPACE_DIRECTORY, workspacesDir);
+
         return result;
     }
 
@@ -471,8 +471,8 @@ export class Console extends Runner {
             : runCommand.command.parameters[commandIndex];
 
         let dirPath = (runCommand.command.parameters.length > 1 && runCommand.command.parameters[2].dir)
-            ? path.join(this.getVariable(this.workspaceDirectory), runCommand.command.parameters[2].dir)
-            : this.getVariable(this.workspaceDirectory)
+            ? path.join(this.getVariable(this.WORKSPACE_DIRECTORY), runCommand.command.parameters[2].dir)
+            : this.getVariable(this.WORKSPACE_DIRECTORY)
 
         if(runCommand.command.parameters.length > 2 && runCommand.command.parameters[2].asynchronous){
             if(runCommand.command.parameters[3].port){
