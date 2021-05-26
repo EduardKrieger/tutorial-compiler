@@ -1,0 +1,16 @@
+== Generate Java code with CobiGen
+
+How to use CobiGen to generate an end-to-end Java CRUD application code.
+More information about CobiGen on https://devonfw.com/website/pages/docs/master-cobigen.asciidoc.html.
+
+
+=== Prerequisites
+* An installed devonfw distribution is needed. To execute the CobiGen in Eclipse IDE, you have to install the devonfw IDE with the Eclipse IDE first. Follow the https://devonfw.com/website/pages/docs/devonfw-ide-introduction.asciidoc.html[devonfw-ide] documentation to install the same.
+* You should have Java development experience
+
+=== Generate Java code with <% fileName; %>
+
+CobiGen can generate code based on the source file and templates.
+CobiGen has two different generation modes depending on the input selected for generation. The first one is the simple mode, which will be started if the input contains only one input artifact, e.g. for Java an input artifact currently is a Java file. The second one is the batch mode, which will be started if the input contains multiple input artifacts, e.g. for Java this means a list of files. We will just use the simple mode, but a detailed usage information for the batch mode can be found https://github.com/devonfw/cobigen/wiki/cobigen-eclipse_usage#batch-mode[here].
+
+*eclipse stürzt bei mi ab*

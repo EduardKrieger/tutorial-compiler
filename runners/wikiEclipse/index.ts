@@ -45,4 +45,9 @@ export class WikiEclipse extends WikiRunner {
         this.renderWiki(path.join(this.getRunnerDirectory(), "templates", "createDevon4jProject.asciidoc"), { name: runCommand.command.parameters[0]});
         return null;
     }
+    
+    runCobiGenJava(runcommand: RunCommand): RunResult{
+        this.renderWiki(path.join(this.getRunnerDirectory(), "templates", "cobiGenJava.asciidoc"), {});
+        return null;
+    }
 }
