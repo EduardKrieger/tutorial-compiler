@@ -7,3 +7,20 @@ More information about CobiGen on https://devonfw.com/website/pages/docs/master-
 === Prerequisites
 * An installed devonfw distribution is needed. To execute the CobiGen CLI, you have to install the devonfw IDE first. Follow the https://devonfw.com/website/pages/docs/devonfw-ide-introduction.asciidoc.html[devonfw-ide] documentation to install the same.
 * You should have Java development experience
+
+=== Generate Java code with <% fileName; %>
+
+CobiGen can generate CobiGen code based on the source file and the templates you have passed to the CLI. 
+
+[options="header"]
+|=======================
+|Template ID| Generated Files     
+|1    |CRUD logic: Generates the logic layer and implementations for some use cases.
+|3    |CRUD REST services: Generates the service layer with CRUD operations for using in REST services.     
+|5    |TO's: Generates the related Transfer Objects.     
+|6    |Entity infrastructure: Creates the entity main interface and edits (by a merge) the current entity to extend the newly generated classes     
+|8    |CRUD SpringData Repository: Generates the entity repository (that contains the CRUD operations) in the data access layer.
+|=======================
+
+
+

@@ -40,4 +40,9 @@ export class WikiVsCode extends WikiRunner {
             contentFile: contentFile, fileName: fileName});
         return null;
     }
+    
+    runCobiGenJava(runcommand: RunCommand): RunResult{
+        this.renderWiki(path.join(this.getRunnerDirectory(), "templates", "cobiGenJava.asciidoc"), {});
+        return null;
+    }
 }

@@ -1,0 +1,15 @@
+== Generate Java code with CobiGen
+
+How to use CobiGen to generate an end-to-end Java CRUD application code.
+More information about CobiGen on https://devonfw.com/website/pages/docs/master-cobigen.asciidoc.html.
+
+
+=== Prerequisites
+* An installed devonfw distribution is needed. To execute the CobiGen in VS Code, you have to install the devonfw IDE with VS Code first. Follow the https://devonfw.com/website/pages/docs/devonfw-ide-introduction.asciidoc.html[devonfw-ide] documentation to install the same.
+* You should have Java development experience
+
+=== Generate Java code with <% fileName; %> in VS Code Editor
+
+CobiGen can generate code based on the source file and templates. So first open the file you want to generate code for with you VS Code Editor. 
+Opening a file can be done by going to the file context menu in the top left corner right next to the VS Code symbol and selecting *Open File* or use the keyboard shortcut ctrl+n. A new VS Code editor window for <%= fileName; %>. Now you also can locate your file in the VS Code file explorer left next to the Editor window. To use Cobigen generate you just have to left-click on *<%= fileName; %>* and select Cobigen in the dropdown menu. 
+*Maven Error at this point i will continu later*
