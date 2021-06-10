@@ -60,6 +60,7 @@ export abstract class Runner {
 
     protected getWorkingDirectory(): string {
         let dir = (<string>this.getVariable("workingDir")) || __dirname + "/../working/";
+        console.log("Zu spät `?")
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir);
         }
