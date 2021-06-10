@@ -57,6 +57,7 @@ export class ConsoleUtils {
 
     static restoreDevonDirectory() {
         let homedir = os.homedir();
+        console.log(homedir);
         console.log("Hallo");
         if(fs.existsSync(path.join(homedir, ".devon")) && fs.existsSync(path.join(homedir, ".devon_backup"))) {
             fs.rmdirSync(path.join(homedir, ".devon"), { recursive: true });
@@ -65,5 +66,6 @@ export class ConsoleUtils {
         if(!fs.existsSync(path.join(homedir, ".devon")) && fs.existsSync(path.join(homedir, ".devon_backup"))) {
             fs.renameSync(path.join(homedir, ".devon_backup"), path.join(homedir, ".devon"));
         }
+        console.log("Durch");
     }
 }
