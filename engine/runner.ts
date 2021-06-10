@@ -101,6 +101,7 @@ export abstract class Runner {
     }
 
     protected createFolder(path: string, deleteFolderIfExist: boolean) {
+        console.log(this.createFolder.caller);
         if(fs.existsSync(path)) {
             if(deleteFolderIfExist) {
                 try {
