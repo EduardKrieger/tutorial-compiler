@@ -24,7 +24,6 @@ export class VsCode extends Runner {
         this.createFolder(path.join(__dirname, "resources"), false);
         this.createFolder(path.normalize(this.getWorkingDirectory()), true);
         this.env = process.env;
-        console.log("test");
         playbook.steps.forEach(step => {
             step.lines.forEach(stepLine => {
                 if((stepLine.name == "installDevonfwIde" || stepLine.name == "restoreDevonfwIde") && stepLine.parameters[0].indexOf("vscode") > -1) {
@@ -32,7 +31,6 @@ export class VsCode extends Runner {
                 }
             });
         });
-        console.log("init finish");
     }
 
     async destroy(playbook: Playbook): Promise<void> {

@@ -907,12 +907,18 @@ export class Console extends Runner {
         return null;
     }
 
+    private async killAsyncProcessesEduard(): Promise<void>{
+
+    }
+    private async killAsyncProcessesEDE(): Promise<void> {
+        // get all Processes to kill
+
+    }
     private async killAsyncProcesses(): Promise<void> {
         let killProcessesRecursively = function(processes: psList.ProcessDescriptor[], processIdToKill: number) {
             let childProcesses = processes.filter(process => {
                 return process.ppid == processIdToKill;
             });
-
 
             if(childProcesses.length > 0) {
                 for(let childProcess of childProcesses) {
@@ -926,12 +932,12 @@ export class Console extends Runner {
                 console.error("Error killing id " + processIdToKill, e);
             }
         }
-
-        if(this.asyncProcesses.length > 0) {
+            if(this.asyncProcesses.length > 0) {
             let processes: psList.ProcessDescriptor[] = Array.from((await psList()).values());
             for(let asyncProcess of this.asyncProcesses) {
-                killProcessesRecursively(processes.reverse(), asyncProcess.pid);
+                killProcessesRecursively(processes, asyncProcess.pid);
             }
+
             //Check if there are still running processes on the given ports
             for(let asyncProcess of this.asyncProcesses.reverse()) {
                 let processes: any[] = await findProcess("port", asyncProcess.port);
@@ -944,9 +950,9 @@ export class Console extends Runner {
                             }
                         }
                     }
-                }      
             }
         }
+    }
 
     private async cleanUp(): Promise<void> {
         await this.killAsyncProcesses();

@@ -2,6 +2,7 @@ import { RunResult } from "./run_result";
 import { Playbook } from "./playbook";
 import * as fs from 'fs';
 import * as rimraf from 'rimraf';
+import * as fse from 'fs-extra';
 import { RunCommand } from "./run_command";
 
 export abstract class Runner {
@@ -60,7 +61,6 @@ export abstract class Runner {
 
     protected getWorkingDirectory(): string {
         let dir = (<string>this.getVariable("workingDir")) || __dirname + "/../working/";
-        console.log("Zu spät `?")
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir);
         }
@@ -102,11 +102,11 @@ export abstract class Runner {
     }
 
     protected createFolder(path: string, deleteFolderIfExist: boolean) {
-        console.log(path);
         if(fs.existsSync(path)) {
             if(deleteFolderIfExist) {
                 try {
-                    rimraf.sync(path);
+                    fse.removeSync(path);
+                    //rimraf.sync(path);
                 } catch(e) {
                     console.log("Error deleting foler " + path, e);
                 }
